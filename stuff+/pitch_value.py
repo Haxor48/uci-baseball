@@ -2,6 +2,7 @@ import numpy as np
 import pybaseball as pb
 import pandas as pd
 import requests
+from pathlib import Path
 
 def get_mlb_game_data(start, end):
     all_games = []
@@ -11,9 +12,9 @@ def get_mlb_game_data(start, end):
         for date in json['dates']:
             for game in date['games']:
                 all_games.append(game['gamePk'])
-    
-    for code in all_games:
-        
+                
+    print(all_games)
 
 if __name__ == '__main__':
-    print(list(pb.statcast_single_game(529429).columns))
+    re288 = pd.read_csv(Path('re288_2024.csv'))
+    re288.to_csv(Path('re288_2024.csv'))
